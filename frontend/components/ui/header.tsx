@@ -27,19 +27,17 @@ import { useRouter, usePathname } from "next/navigation";
 export function Header() {
   const { isAuthenticated, userEmail, userLevel, logout, updateUserLevel } = useAuth();
   const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
-  const [isPending, startTransition] = useTransition(); // <-- ИНИЦИАЛИЗИРУЕМ transition
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
 
   const handleLevelChange = (newLevel: string) => {
     if (userLevel === newLevel) return;
 
-    // Оборачиваем асинхронное действие в startTransition
     startTransition(async () => {
       try {
         await updateUserLevel(newLevel);
 
-        // Проверяем текущий путь
         if (pathname.startsWith('/rules/')) {
           router.push('/');
         } else {
@@ -56,7 +54,7 @@ export function Header() {
   return (
     <header className="w-full bg-white border-b border-slate-200 py-4 px-4 sm:px-6 shadow-sm">
       <div className="container mx-auto max-w-6xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        {/* Логотип и подпись */}
+        {/* Logo and subtitle */}
         <div>
           <Link href="/" passHref className="hover:opacity-90 transition-opacity">
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 font-sans">
@@ -64,35 +62,35 @@ export function Header() {
             </h1>
           </Link>
           <p className="text-slate-500 mt-1 text-sm">
-            Изучайте испанскую грамматику, адаптированную под ваш уровень.
+            Learn Spanish grammar adapted to your level.
           </p>
         </div>
 
-        {/* Блок авторизации и уровня пользователя */}
+        {/* Authentication and user level block */}
         <div className="flex items-center space-x-4 self-end sm:self-auto">
           {isAuthenticated ? (
               <div className="flex items-center space-x-2 bg-slate-50 p-1.5 pl-3 rounded-xl border border-slate-100 shadow-sm">
                 <div className="flex items-center gap-3">
-                  {/* Кнопка "Мой Прогресс" */}
+                  {/* "My Progress" button */}
                   <Link
                     href="/progress"
                     className="text-sm font-semibold text-slate-600 hover:text-indigo-600 relative py-1 transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-indigo-600 after:transition-all"
                   >
-                    Мой Прогресс
+                    My Progress
                   </Link>
 
-                  {/* Разделитель */}
+                  {/* Divider */}
                   <span className="text-slate-300 text-xs hidden sm:inline">|</span>
 
-                  {/* Приветствие */}
+                  {/* Greeting */}
                   <span className="text-sm text-slate-500 hidden md:inline">
-                    Привет, <strong className="font-semibold text-slate-700">{userEmail}</strong>
+                    Hello, <strong className="font-semibold text-slate-700">{userEmail}</strong>
                   </span>
 
-                  {/* Разделитель */}
+                  {/* Divider */}
                   <span className="text-slate-300 text-xs hidden md:inline">|</span>
 
-                  {/* Переключатель уровня пользователя */}
+                  {/* User level selector */}
                   <div className="flex items-center gap-2">
                       <Select
                         onValueChange={handleLevelChange}
@@ -100,10 +98,9 @@ export function Header() {
                         disabled={isPending}
                       >
                         <SelectTrigger className="w-[85px] h-9 text-sm font-medium bg-white border-slate-200 rounded-lg shadow-sm focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-70 transition-all">
-                          <SelectValue placeholder="Уровень" />
+                          <SelectValue placeholder="Level" />
                         </SelectTrigger>
 
-                        {/* ИСПРАВЛЕНИЕ: Добавлены position="popper" и sideOffset={4} */}
                         <SelectContent
                           position="popper"
                           sideOffset={4}
@@ -121,7 +118,7 @@ export function Header() {
                         </SelectContent>
                       </Select>
 
-                      {/* Индикатор загрузки */}
+                      {/* Loading indicator */}
                       {isPending && (
                         <div className="w-4 h-4 flex items-center justify-center">
                           <Loader2 className="h-4 w-4 animate-spin text-indigo-600 dynamic-spinner" />
@@ -130,7 +127,7 @@ export function Header() {
                     </div>
                 </div>
 
-                {/* Разделитель перед выходом */}
+                {/* Divider before logout */}
                 <span className="text-slate-200 h-5 w-[1px] mx-1"></span>
 
                 <Button
@@ -139,26 +136,26 @@ export function Header() {
                   className="text-rose-600 hover:text-rose-700 hover:bg-rose-50 rounded-lg h-9 text-sm font-medium transition-colors"
                   disabled={isPending}
                 >
-                  Выйти
+                  Logout
                 </Button>
               </div>
             ) : (
             <div className="flex items-center space-x-3">
               <Badge variant="outline" className="text-slate-500 border-slate-300 font-medium">
-                Режим гостя (A1)
+                Guest Mode (A1)
               </Badge>
 
               <Dialog open={isAuthDialogOpen} onOpenChange={setIsAuthDialogOpen}>
                 <DialogTrigger asChild>
                   <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-sm transition-all text-sm h-10">
-                    Войти / Зарегистрироваться
+                    Login / Register
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Вход / Регистрация</DialogTitle>
+                    <DialogTitle>Login / Register</DialogTitle>
                     <DialogDescription>
-                      Войдите или зарегистрируйтесь, чтобы получить доступ ко всем функциям.
+                      Log in or sign up to get access to all features.
                     </DialogDescription>
                   </DialogHeader>
                   <AuthForm onClose={() => setIsAuthDialogOpen(false)} />

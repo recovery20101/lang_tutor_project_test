@@ -674,18 +674,29 @@ export default function RulePage({ params: paramsPromise }: { params: Promise<{ 
                 </h2>
 
               <Tabs defaultValue="fill" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 bg-slate-100 p-1 rounded-xl mb-6">
-                  <TabsTrigger value="fill" className="rounded-lg text-xs font-semibold py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                    <CheckSquare className="w-3.5 h-3.5 mr-1.5 text-indigo-600" />
-                    Blanks
+                <TabsList className="flex w-full bg-slate-100 p-1 rounded-xl mb-6">
+                  <TabsTrigger
+                    value="fill"
+                    className="flex-1 rounded-lg text-xs font-semibold py-2 px-1 flex items-center justify-center data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all"
+                  >
+                    <CheckSquare className="w-3.5 h-3.5 mr-1 text-indigo-600 shrink-0" />
+                    <span className="truncate">Blanks</span>
                   </TabsTrigger>
-                  <TabsTrigger value="choice" className="rounded-lg text-xs font-semibold py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                    <ListPlus className="w-3.5 h-3.5 mr-1.5 text-emerald-600" />
-                    Tests
+
+                  <TabsTrigger
+                    value="choice"
+                    className="flex-1 rounded-lg text-xs font-semibold py-2 px-1 flex items-center justify-center data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all"
+                  >
+                    <ListPlus className="w-3.5 h-3.5 mr-1 text-emerald-600 shrink-0" />
+                    <span className="truncate">Tests</span>
                   </TabsTrigger>
-                  <TabsTrigger value="free" className="rounded-lg text-xs font-semibold py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                    <PenTool className="w-3.5 h-3.5 mr-1.5 text-purple-600" />
-                    Writing
+
+                  <TabsTrigger
+                    value="free"
+                    className="flex-1 rounded-lg text-xs font-semibold py-2 px-1 flex items-center justify-center data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all"
+                  >
+                    <PenTool className="w-3.5 h-3.5 mr-1 text-purple-600 shrink-0" />
+                    <span className="truncate">Writing</span>
                   </TabsTrigger>
                 </TabsList>
 
