@@ -1,0 +1,42 @@
+# 1. Спецификатор для CPU-версий (ставится в самом верху)
+--index-url https://download.pytorch.org/whl/cpu
+
+# 2. Машинное обучение и RAG (без CUDA, чтобы образ не весил 12ГБ)
+torch>=2.2.0
+torchvision>=0.17.0
+sentence-transformers>=3.0.0
+
+--extra-index-url https://pypi.org/simple
+# chromadb версии 0.4.x - самая стабильная сейчас
+chromadb==0.5.23
+# protobuf фиксируем, чтобы не было конфликтов с Google GenAI
+protobuf>=4.25.0,<5.0.0
+
+# 3. Веб-фреймворк и сервер
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+
+# 4. Работа с данными и БД
+# Используем SQLAlchemy 2.0 - это стандарт для асинхронности
+SQLAlchemy[asyncio]>=2.0.25
+asyncpg>=0.29.0
+alembic>=1.13.0
+pydantic[email]>=2.6.0
+pydantic-settings>=2.0.0
+
+# 5. Интеграция с ИИ (Gemini)
+google-genai>=1.73.1
+# pymupdf4llm для парсинга PDF в Markdown для RAG
+pymupdf4llm>=0.0.12
+
+# 6. Безопасность и Auth
+# Используем современную версию, чтобы не было проблем с pycrypto
+python-jose[cryptography]>=3.3.0
+# Фиксируем bcrypt, так как в новых версиях Python старый passlib падает
+passlib[bcrypt]>=1.7.4
+bcrypt==4.0.1
+
+# 7. Утилиты
+python-dotenv>=1.0.1
+PyYAML>=6.0.1

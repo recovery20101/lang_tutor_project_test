@@ -1,0 +1,63 @@
+# Python
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+*.swp
+
+# Node.js / Next.js
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.next/
+out/
+build/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# IDEs and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+/shelf/
+/workspace.xml
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env*
+
+# Sensitive files
+auth.json
+
+# Project-specific generated/temporary directories
+grammar_base/
+backend/app/scripts/utils
+
+
+# Hugging Face Cache (large files, long paths)
+hf_cache/*
+!hf_cache/.gitkeep
+
+pyrightconfig.json
+lang_tutor_project.code-workspace
+.vscode
