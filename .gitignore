@@ -52,11 +52,9 @@ auth.json
 # Project-specific generated/temporary directories
 grammar_base/
 backend/app/scripts/utils/
-
-
-# Hugging Face Cache (large files, long paths)
-hf_cache/*
-!hf_cache/.gitkeep
+plans/
+hf_cache/
+docs/
 
 pyrightconfig.json
 lang_tutor_project.code-workspace
