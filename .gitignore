@@ -51,7 +51,7 @@ auth.json
 
 # Project-specific generated/temporary directories
 grammar_base/
-backend/app/scripts/utils
+backend/app/scripts/utils/
 
 
 # Hugging Face Cache (large files, long paths)

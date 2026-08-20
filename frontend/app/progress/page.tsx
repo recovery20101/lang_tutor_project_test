@@ -175,7 +175,7 @@ export default function ProgressPage() {
                 <CardHeader className="bg-slate-50/50 border-b border-slate-100 py-4 px-5">
                   <CardTitle className="text-lg font-bold text-slate-800 flex items-center space-x-2">
                     <Clock className="w-5 h-5 text-amber-500" />
-                    <span>TODAY'S REVIEWS</span>
+                    <span>TODAY&apos;S REVIEWS</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-5">
